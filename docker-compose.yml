@@ -1,13 +1,14 @@
 services:
   redis1226:
     image: redis:7
-    container_name: redis
+    container_name: redis1226
     restart: always
 
   backend:
     build: ./back
     container_name: backend
     restart: always
+    env_file: main.env
     depends_on:
       - redis1226
     environment:
