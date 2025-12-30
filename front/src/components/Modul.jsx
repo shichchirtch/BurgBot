@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { UserContext } from "../context/UserContextJS";
+import { UserContext } from "../context/UserContextJS.js";
 
 export default function Modul() {
     const { modal, closeModal } = useContext(UserContext);
