@@ -15,9 +15,9 @@ services:
       REDIS_HOST: redis1226
       REDIS_PORT: 6379
 
-  frontend:
-    build: ./front
-    restart: always
+#  frontend:
+#    build: ./front
+#    restart: always
 
   nginx:
     image: nginx:1.25-alpine
