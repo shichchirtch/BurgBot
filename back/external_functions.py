@@ -2,7 +2,7 @@ from aiogram.types import CallbackQuery
 from aiogram_dialog.api.entities.modes import ShowMode
 from aiogram_dialog.widgets.kbd import ManagedRadio
 from aiogram_dialog import DialogManager
-from redis_client import r
+from my_fast_api import r
 
 
 async def get_user_count():

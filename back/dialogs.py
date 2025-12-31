@@ -11,7 +11,7 @@ import json
 import operator, asyncio, datetime
 from external_functions import radio_spam_button_clicked
 from static_func import *
-from redis_client import r
+from my_fast_api import r
 
 
 async def get_spam(dialog_manager: DialogManager, **kwargs):

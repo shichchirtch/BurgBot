@@ -4,7 +4,7 @@ from aiogram.types import Message, CallbackQuery
 from bot_instance import ZEIGEN, dp,bot_storage_key
 from aiogram_dialog.widgets.text import Const, Format
 from aiogram_dialog.widgets.kbd import Button, Row, Cancel, Select, Group
-from redis_client import r
+from my_fast_api import r
 
 PAGE_SIZE = 5
 

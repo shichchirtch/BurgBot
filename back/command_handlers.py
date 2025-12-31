@@ -7,7 +7,7 @@ from aiogram.fsm.context import FSMContext
 from bot_instance import FSM_ST, ADMIN
 from aiogram_dialog import  DialogManager, StartMode
 from  external_functions import get_user_count
-from redis_client import r
+from my_fast_api import r
 
 
 ch_router = Router()
