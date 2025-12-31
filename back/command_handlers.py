@@ -36,7 +36,7 @@ async def command_start_process(message:Message, dialog_manager: DialogManager, 
                               f'Ich wurde bereits von <b>{users_started_bot_allready}</b> Nutzern, wie Ihnen, gestartet. 🎲', reply_markup=ReplyKeyboardRemove())
     await message.answer("Bitte klicken Sie auf den <b>Burg</b>, um die Web-App zu öffnen. ↙️"),
     await dialog_manager.start(state=FSM_ST.spam, mode=StartMode.RESET_STACK)
-
+    logger.warning('\n\n\nWe are hier !')
 
 
 #
