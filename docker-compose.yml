@@ -4,6 +4,13 @@ services:
     restart: always
     volumes:
       - redis_data:/data
+  bot:
+    build: ./back
+    command: python main.py
+    restart: always
+    env_file: main.env
+    depends_on:
+      - redis1226
 
   backend:
     build: ./back
@@ -11,13 +18,6 @@ services:
     env_file: main.env
     depends_on:
       - redis1226
-    environment:
-      REDIS_HOST: redis1226
-      REDIS_PORT: 6379
-
-#  frontend:
-#    build: ./front
-#    restart: always
 
   nginx:
     build:
