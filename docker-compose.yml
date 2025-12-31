@@ -31,7 +31,6 @@ services:
       - ./certbot/conf:/etc/letsencrypt
     depends_on:
       - backend
-      - frontend
 
 volumes:
   redis_data:
