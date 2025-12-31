@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import {UserContext} from "../context/userContextJS";
+import {UserContext} from "../context/userContext.js";
 
 export default function ZeigtEingeben() {
     const { user } = useContext(UserContext);

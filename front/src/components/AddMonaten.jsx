@@ -4,7 +4,7 @@ import localeData from "dayjs/plugin/localeData"
 import "dayjs/locale/de"
 import ToggleMonatenButton  from "./ToggleMonatenButton.jsx";
 import {useContext} from "react";
-import {UserContext} from "../context/userContextJS";
+import {UserContext} from "../context/userContext.js";
 import ShowButton from "./ShowButton.jsx";
 
 dayjs.extend(localeData)
