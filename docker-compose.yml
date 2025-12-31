@@ -20,6 +20,7 @@ services:
 #    restart: always
 
   nginx:
+    build: ./front
     image: nginx:1.25-alpine
     restart: always
     ports:
