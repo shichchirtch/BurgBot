@@ -17,14 +17,13 @@ async def main():
 
     # роутеры
     dp.include_router(ch_router)
-    # dp.include_router(start_dialog)
-    # dp.include_router(create_dialog)
-    # dp.include_router(zeigen_dialog)
-    # dp.include_router(admin_dialog)
+    dp.include_router(start_dialog)
+    dp.include_router(create_dialog)
+    dp.include_router(zeigen_dialog)
+    dp.include_router(admin_dialog)
 
     # dialogs
-    # setup_dialogs(dp)
-    setup_dialogs(dp, start_dialog, create_dialog, zeigen_dialog, admin_dialog)
+    setup_dialogs(dp)
 
     # старт бота
     await bot.delete_webhook(drop_pending_updates=True)
