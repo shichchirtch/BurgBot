@@ -20,8 +20,8 @@ ch_router = Router()
 async def command_start_process(message:Message, dialog_manager: DialogManager, state:FSMContext):
     user_id = str(message.from_user.id)
     user_name = message.from_user.first_name
-    us_data = message.from_user
-    logger.warning(us_data)
+    usgg_data = message.from_user
+    logger.warning(usgg_data)
 
     logger.warning("🔥 BOT HANDLER CALLED")
     # инициализировать профиль в Redis (если ещё нет)
