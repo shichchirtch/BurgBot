@@ -28,31 +28,29 @@ async def message_text_acc(message: Message, widget: MessageInput, dialog_manage
     await dialog_manager.switch_to(FSM_ST.start)
 
 
-
 about_dialog = Dialog(
     Window(
         Const('<b>Über das Projekt</b>\n\n'
               'Dieser Bot kombiniert folgende Technologien:\n\n'
-                '✅ <b>aiogram_dialog</b>\n\n'
+              '✅ <b>aiogram_dialog</b>\n\n'
               '✅<b>Fast API</b>\n\n'
               '✅ <b>React+Vite</b>\n\n'
               '✅ <b>Redis wie Datenbank</b>\n\n\n',
-                'Um den Entwickler zu kontaktieren, senden Sie eine Nachricht.'),
+              'Um den Entwickler zu kontaktieren, senden Sie eine Nachricht.'),
         Row(Next(Const('✉️'),
-            id="schreib_nachrichten",
-        ),
+                 id="schreib_nachrichten",
+                 ),
             Cancel(Const("◀️ Zurück"),
-               id="back")),
+                   id="back")),
         state=ABOUT.one,
     ),
-Window(
-    Const("Senden Sie eine Nachricht an den Entwickler"),
-    MessageInput(
-        func=message_text_acc,
-        content_types=ContentType.TEXT,
-    ),
-    Cancel(Const('◀️'),
-           id='about_acc'),
-    state=ABOUT.accepting,
-))
-
+    Window(
+        Const("Senden Sie eine Nachricht an den Entwickler"),
+        MessageInput(
+            func=message_text_acc,
+            content_types=ContentType.TEXT,
+        ),
+        Cancel(Const('◀️'),
+               id='about_acc'),
+        state=ABOUT.accepting,
+    ))
