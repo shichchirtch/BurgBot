@@ -5,7 +5,7 @@ from back.bot_instance import FSM_ST
 from bot_instance import ABOUT, bot
 from aiogram.types import ContentType
 from aiogram_dialog.widgets.text import Const
-from aiogram_dialog.widgets.kbd import Button, Row, Cancel, Next
+from aiogram_dialog.widgets.kbd import Row, Cancel, Next
 from aiogram_dialog.widgets.input import MessageInput
 from static_func import check_len_note
 
