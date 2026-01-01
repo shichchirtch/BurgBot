@@ -4,12 +4,11 @@ from aiogram.types import Message, ReplyKeyboardRemove
 from aiogram.filters import CommandStart, Command
 from filters import  IS_ADMIN, PRE_START
 from aiogram.fsm.context import FSMContext
-from bot_instance import FSM_ST
+from bot_instance import FSM_ST, ADMIN
 from aiogram_dialog import  DialogManager, StartMode
 from  external_functions import get_user_count, get_total_months_count
 from my_fast_api import r
 from keyboards import pre_start_clava
-from admin_dialog import ADMIN
 import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -54,13 +53,6 @@ async def before_start(message: Message):
     await prestart_ant.delete()
 
 
-@ch_router.message(Command('admin'), IS_ADMIN())
-async def basic_menu_start(message: Message, dialog_manager: DialogManager):
-    await dialog_manager.start(ADMIN.first)
-    await asyncio.sleep(1)
-    await message.delete()
-
-
 @ch_router.message(Command('basic_menu'))
 async def basic_menu_start(message: Message, dialog_manager: DialogManager):
     await dialog_manager.start(state=FSM_ST.start, mode=StartMode.RESET_STACK)
@@ -82,6 +74,7 @@ async def command_wieviel(message: Message, dialog_manager: DialogManager):
 
 @ch_router.message(Command('admin'), IS_ADMIN())
 async def admin_enter(message: Message, dialog_manager: DialogManager):
+    print('\n\nwork function admin_enter')
     await dialog_manager.start(ADMIN.first)
     await asyncio.sleep(1)
     await message.delete()

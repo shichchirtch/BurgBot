@@ -8,8 +8,10 @@ async def set_main_menu(bot):
 
         BotCommand(command='/about_project',
                    description='Info'),
+
         BotCommand(command='/hauptfenster',
                    description='zum Hauptfenster'),
+
         BotCommand(command='/wieviel',
                    description='wie viel Nutzern wurde gestartet')
 
