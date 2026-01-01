@@ -11,7 +11,7 @@ from aiogram.exceptions import TelegramForbiddenError
 from my_fast_api import r
 from static_func import check_len_note
 
-
+admin_id = 6685637602
 
 
 
@@ -97,13 +97,12 @@ admin_dialog = Dialog(
 
 async def message_text_acc(message: Message, widget: MessageInput, dialog_manager: DialogManager) -> None:
     print('we into message_text_acc')
-    user_id = message.from_user.id
     us_data = message.from_user
     print('us_data = ', us_data)
-    user_name = message.from_user.first_name
+    user_name = message.from_user.username
     note = check_len_note(message.text)
     note = f'{note}\n\n\n von {user_name}'
-    await bot.send_message(user_id, note)
+    await bot.send_message(admin_id, note)
 
     await asyncio.sleep(1)
 
