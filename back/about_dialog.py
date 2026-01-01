@@ -1,20 +1,14 @@
-import asyncio, json
-from aiogram_dialog import Dialog, StartMode, Window, DialogManager, ShowMode
-from aiogram.types import Message, CallbackQuery
-
+import asyncio
+from aiogram_dialog import Dialog, Window, DialogManager, ShowMode
+from aiogram.types import Message
 from back.bot_instance import FSM_ST
 from bot_instance import ABOUT, bot
 from aiogram.types import ContentType
-from aiogram_dialog.widgets.text import Const, Format
-from aiogram_dialog.widgets.kbd import Button, Row, Cancel, Select, Group, Next
+from aiogram_dialog.widgets.text import Const
+from aiogram_dialog.widgets.kbd import Button, Row, Cancel, Next
 from aiogram_dialog.widgets.input import MessageInput
-from my_fast_api import r
 from static_func import check_len_note
 
-
-async def schreiben_msg(c: CallbackQuery, button, dialog_manager: DialogManager):
-    dialog_manager.dialog_data["page"] -= 1
-    await dialog_manager.show()
 
 async def message_text_acc(message: Message, widget: MessageInput, dialog_manager: DialogManager) -> None:
     print('we into message_text_acc')
@@ -46,7 +40,6 @@ about_dialog = Dialog(
                 'Um den Entwickler zu kontaktieren, senden Sie eine Nachricht.'),
         Row(Next(Const('✉️'),
             id="schreib_nachrichten",
-            on_click=schreiben_msg,
         ),
             Cancel(Const("◀️ Zurück"),
                id="back")),

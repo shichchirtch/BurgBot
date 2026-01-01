@@ -56,7 +56,7 @@ class ADMIN(StatesGroup):
 class ABOUT(StatesGroup):
     one = State()
     accepting = State()
-    gesendet = State()
+
 
 
 server_cart = {}
