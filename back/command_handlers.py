@@ -22,7 +22,8 @@ async def command_start_process(message:Message, dialog_manager: DialogManager, 
     # инициализировать профиль в Redis (если ещё нет)
     key_profile = f"user:{user_id}:profile"
     exists = await r.exists(key_profile)
-    logger.warning("Heir !!!!!!!!!!!!!!!!!!!!!!!!!!!")
+    logging.getLogger().warning("Heir !!!")
+
     logger.warning(f"exists = {exists}")
 
     if not exists:

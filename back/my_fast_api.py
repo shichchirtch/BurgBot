@@ -27,6 +27,11 @@ f_api = FastAPI(
 
 logger = logging.getLogger("fastapi")
 
+@f_api.get("/")
+async def root():
+    return {"root": True}
+
+
 @f_api.get("/ping")
 async def ping():
     return {"pong": True}
