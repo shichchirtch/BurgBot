@@ -97,13 +97,10 @@ admin_dialog = Dialog(
 
 async def message_text_acc(message: Message, widget: MessageInput, dialog_manager: DialogManager) -> None:
     print('we into message_text_acc')
-    us_data = message.from_user
-    print('us_data = ', us_data)
     user_name = message.from_user.username
     note = check_len_note(message.text)
     note = f'{note}\n\n\n von {user_name}'
     await bot.send_message(admin_id, note)
-
     await asyncio.sleep(1)
 
     await message.answer(text=f'Die Nachricht wurde erfolgreich gesendet.')
