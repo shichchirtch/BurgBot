@@ -53,6 +53,10 @@ class ADMIN(StatesGroup):
     accept_msg = State()
     admin_send_msg = State()
 
+class ABOUT(StatesGroup):
+    one = State()
+    accepting = State()
+    gesendet = State()
 
 
 server_cart = {}

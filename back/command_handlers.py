@@ -48,7 +48,7 @@ async def command_start_process(message:Message, dialog_manager: DialogManager, 
 async def before_start(message: Message):
     prestart_ant = await message.answer(text='Klicken auf /start !')
     await message.delete()
-    await asyncio.sleep(3)
+    await asyncio.sleep(10)
     await prestart_ant.delete()
 
 
@@ -82,3 +82,9 @@ async def admin_enter(message: Message, dialog_manager: DialogManager):
     await dialog_manager.start(state=ADMIN.first)
     await asyncio.sleep(1)
     await message.delete()
+
+@ch_router.message(Command('/about_project'))
+async def aboutProject(message: Message, dialog_manager: DialogManager):
+
+
+    await dialog_manager.start(state=FSM_ST.start, mode=StartMode.RESET_STACK)
