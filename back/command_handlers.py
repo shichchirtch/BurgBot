@@ -63,7 +63,8 @@ async def command_help(message: Message, dialog_manager: DialogManager):
     'Это бот для подсчета взносов в песионный фонд Германии. Отмечайте по календарю, когда Вы сделали взнос.\n\n'
     'В боте можно создавать заметки по поводу сделанных взносов или просто на любую тему.\n\n😉')
     await asyncio.sleep(1)
-    await dialog_manager.start(state=FSM_ST.start, mode=StartMode.RESET_STACK)
+    # await dialog_manager.start(state=FSM_ST.start, mode=StartMode.RESET_STACK)
+    await dialog_manager.start(state=ABOUT.one, mode=StartMode.RESET_STACK)
 
 
 @ch_router.message(Command('wieviel'))
