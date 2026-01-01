@@ -116,12 +116,12 @@ async def message_text_acc(message: Message, widget: MessageInput, dialog_manage
 about_dialog = Dialog(
     Window(
         Const('<b>Über das Projekt</b>\n\n'
-              'Dieser Bot kombiniert folgende Technologien:\n\n'
-              '✅ <b>aiogram_dialog</b>\n\n'
-              '✅<b>Fast API</b>\n\n'
-              '✅ <b>React+Vite</b>\n\n'
-              '✅ <b>Redis wie Datenbank</b>\n\n\n',
-              'Um den Entwickler zu kontaktieren, senden Sie eine Nachricht.'),
+    'Dieser Bot kombiniert folgende Technologien:\n\n'
+    '✅ <b>aiogram_dialog</b>\n'
+    '✅ <b>FastAPI</b>\n'
+    '✅ <b>React + Vite</b>\n'
+    '✅ <b>Redis als Datenbank</b>\n\n'
+    'Um den Entwickler zu kontaktieren, senden Sie eine Nachricht.'),
         Row(Next(Const('✉️'),
                  id="schreib_nachrichten",
                  ),
