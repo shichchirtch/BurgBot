@@ -1,11 +1,10 @@
-from aiogram.types import ReplyKeyboardMarkup, WebAppInfo, KeyboardButton
+from aiogram.types import KeyboardButton, ReplyKeyboardMarkup
 
-web_button = (
-    KeyboardButton(
-        text="Открыть Web App",
-        web_app=WebAppInfo(
-        url="https://0647b927c699.ngrok-free.app ")
-    )
+
+pre_start_button = KeyboardButton(text='/start')
+
+pre_start_clava = ReplyKeyboardMarkup(
+    keyboard=[[pre_start_button]],
+    resize_keyboard=True,
+    input_field_placeholder='Стартуем бота'
 )
-
-wa_kb = ReplyKeyboardMarkup(resize_keyboard=True, keyboard=[[web_button]])

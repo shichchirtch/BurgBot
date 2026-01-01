@@ -7,6 +7,7 @@ from start_menu import set_main_menu
 from aiogram_dialog import setup_dialogs
 from zeigen_dialog import zeigen_dialog
 from dialogs import start_dialog, create_dialog
+from admin_dialog import admin_dialog
 
 
 async def main():
@@ -21,6 +22,7 @@ async def main():
     dp.include_router(start_dialog)
     dp.include_router(create_dialog)
     dp.include_router(zeigen_dialog)
+    dp.include_router(admin_dialog)
 
     # dialogs
     setup_dialogs(dp)

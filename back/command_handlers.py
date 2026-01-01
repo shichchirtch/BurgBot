@@ -2,12 +2,14 @@ from aiogram import Router, html
 import asyncio
 from aiogram.types import Message, ReplyKeyboardRemove
 from aiogram.filters import CommandStart, Command
-from filters import  IS_ADMIN
+from filters import  IS_ADMIN, PRE_START
 from aiogram.fsm.context import FSMContext
-from bot_instance import FSM_ST, ADMIN
+from bot_instance import FSM_ST
 from aiogram_dialog import  DialogManager, StartMode
-from  external_functions import get_user_count
+from  external_functions import get_user_count, get_total_months_count
 from my_fast_api import r
+from keyboards import pre_start_clava
+from admin_dialog import ADMIN
 import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -29,6 +31,7 @@ async def command_start_process(message:Message, dialog_manager: DialogManager, 
     if not exists:
         await r.hset(key_profile, mapping={
             "first_name": user_name,
+            "spam_opt_in": "0"
         })
         await r.sadd("users", user_id)  #  Добавляю в сэт tg_us_id
 
@@ -41,14 +44,14 @@ async def command_start_process(message:Message, dialog_manager: DialogManager, 
     logger.warning('\n\n\nWe are hier !😀😀😀')
 
 
-#
-# @ch_router.message(PRE_START())
-# async def before_start(message: Message):
-#     prestart_ant = await message.answer(text='Klicken auf <b>start</b> !',
-#                                         reply_markup=pre_start_clava)
-#     await message.delete()
-#     await asyncio.sleep(3)
-#     await prestart_ant.delete()
+
+@ch_router.message(PRE_START())
+async def before_start(message: Message):
+    prestart_ant = await message.answer(text='Klicken auf <b>start</b> !',
+                                        reply_markup=pre_start_clava)
+    await message.delete()
+    await asyncio.sleep(3)
+    await prestart_ant.delete()
 
 
 @ch_router.message(Command('admin'), IS_ADMIN())
@@ -60,10 +63,18 @@ async def basic_menu_start(message: Message, dialog_manager: DialogManager):
 
 @ch_router.message(Command('basic_menu'))
 async def basic_menu_start(message: Message, dialog_manager: DialogManager):
-    await dialog_manager.start(state=FSM_ST.basic, mode=StartMode.RESET_STACK)
+    await dialog_manager.start(state=FSM_ST.start, mode=StartMode.RESET_STACK)
 
 
 @ch_router.message(Command('help'))
-async def basic_menu_start(message: Message, dialog_manager: DialogManager):
+async def command_help(message: Message, dialog_manager: DialogManager):
     await message.answer(text='help text')
+    await dialog_manager.start(state=FSM_ST.basic, mode=StartMode.RESET_STACK)
+
+@ch_router.message(Command('wieviel'))
+async def command_wieviel(message: Message, dialog_manager: DialogManager):
+    wieviel = await get_user_count()
+    zusammen_eintrag = await get_total_months_count()
+    await message.answer(text=f'Bot wurde bereits von <b>{wieviel}</b> Nutzern, wie Ihnen, gestartet. 🎲\n\n'
+                              f'Insgesamt wurden <b>{zusammen_eintrag}</b> Beiträge geleistet.')
     await dialog_manager.start(state=FSM_ST.basic, mode=StartMode.RESET_STACK)

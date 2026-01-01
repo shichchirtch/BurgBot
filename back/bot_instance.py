@@ -47,9 +47,6 @@ class ZEIGEN(StatesGroup):
     list_notes = State()
     schlist = State()
 
-class ADMIN(StatesGroup):
-    first = State()
-
 
 
 server_cart = {}

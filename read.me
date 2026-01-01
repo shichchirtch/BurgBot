@@ -18,3 +18,18 @@ ls certbot/conf/live/bsbot.org/
 fullchain.pem
 privkey.pem
 8 docker compose up -d --build полный запуск
+
+----------------- R E D I S --------------------------------
+как зайти внуть контейнера редис
+circ@vm-circ:~/projects/Burg_bot$ docker exec -it burg_bot-redis1226-1 redis-cli
+посмотреть все ключи
+127.0.0.1:6379> KEYS *
+посмотреть профиль конкретного юзера
+circ@vm-circ:~/projects/Burg_bot$ docker exec -it burg_bot-redis1226-1 redis-cli
+127.0.0.1:6379> KEYS *
+
+посмотреть месяцы конкретного юзера
+SMEMBERS user:6685637602:months
+
+посмотреть всех юзеров
+SMEMBERS users

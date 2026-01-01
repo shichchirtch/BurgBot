@@ -27,23 +27,10 @@ f_api = FastAPI(
 
 logger = logging.getLogger("fastapi")
 
-@f_api.get("/")
-async def root():
-    return {"root": True}
-
-@f_api.post("/test")
-async def test():
-    return {"ok": True}
-
-
-@f_api.get("/ping")
-async def ping():
-    return {"pong": True}
 
 
 @f_api.post("/api/receive_telegram_data")
 async def receive_telegram_data(data: dict):
-    print("PY Charm speak 📦 Полученные данные от Telegram:", data)
     user_id = data["user_id"]
     logger.warning(f"📦 Telegram data: {data}")
     await bot.send_message(chat_id= ADMIN_ID,
