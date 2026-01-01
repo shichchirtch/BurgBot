@@ -33,8 +33,8 @@ logger = logging.getLogger("fastapi")
 async def receive_telegram_data(data: dict):
     user_id = data["user_id"]
     logger.warning(f"📦 Telegram data: {data}")
-    await bot.send_message(chat_id= ADMIN_ID,
-                           text = f"user_id from webapp: {user_id}")
+    # await bot.send_message(chat_id= ADMIN_ID,
+    #                        text = f"user_id from webapp: {user_id}")
     return {"ok": True}
 
 @f_api.post("/api/start-test")

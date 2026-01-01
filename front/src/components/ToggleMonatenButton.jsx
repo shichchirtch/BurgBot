@@ -2,17 +2,15 @@ import { useContext } from "react";
 import { UserContextJS } from "../context/userContextJS.js";
 
 function ToggleMonatenButton({ label, year, isActive, toggleMonth }) {
-    // const telegramId = localStorage.getItem("telegramUserId");
+
     const { user } = useContext(UserContextJS);
-    // let user.id = telegramId
-    // const telegramId = localStorage.getItem("telegramUserId");
 
     async function handleClick() {
         const newState = !isActive;
 
         if (isActive) {
             const ok = window.confirm(
-                `Вы уверены, что хотите удалить ${label} ${year}?`
+                `Möchten Sie die Datei wirklich löschen ${label} ${year}?`
             );
             if (!ok) return;
         }
